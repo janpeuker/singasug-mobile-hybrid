@@ -1,0 +1,9 @@
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/Application.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/domain/Stock.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/repository/StocksRepository.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/domain/Price.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/resources/StockPriceResourceController.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/domain/Exchange.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/resources/StockResourceController.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/resources/ExchangeResourceController.java
+/Users/janpeuker/Sources/Git/singasug-mobile-hybrid/code/SimpleExample/src/main/java/com/github/janpeuker/singasugmobilehybrid/springbootsimple/service/StockPriceService.java

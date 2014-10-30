@@ -1,0 +1,9 @@
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/resources/ExchangeResourceController.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/domain/Stock.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/domain/Exchange.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/Application.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/resources/StockPriceResourceController.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/resources/StockResourceController.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/repository/StocksRepository.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/service/StockPriceService.class
+com/github/janpeuker/singasugmobilehybrid/springbootsimple/domain/Price.class
