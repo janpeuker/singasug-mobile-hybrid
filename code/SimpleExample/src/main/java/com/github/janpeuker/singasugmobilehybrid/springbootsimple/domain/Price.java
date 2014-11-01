@@ -1,16 +1,18 @@
 package com.github.janpeuker.singasugmobilehybrid.springbootsimple.domain;
 
+import java.math.BigDecimal;
+
 /**
  * Created by janpeuker on 30/10/14.
  */
 public class Price {
 
     private String symbol;
-    private long price;
+    private BigDecimal price;
     private long asOfTime;
     private String currency;
 
-    public Price(String symbol, long price, long dateAsOf, String currency) {
+    public Price(String symbol, BigDecimal price, long dateAsOf, String currency) {
         this.symbol = symbol;
         this.price = price;
         this.asOfTime = dateAsOf;
@@ -25,11 +27,11 @@ public class Price {
         this.symbol = symbol;
     }
 
-    public long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
