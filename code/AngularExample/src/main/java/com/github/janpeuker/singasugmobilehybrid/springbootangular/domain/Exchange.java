@@ -1,6 +1,7 @@
 package com.github.janpeuker.singasugmobilehybrid.springbootangular.domain;
 
 import org.springframework.hateoas.ResourceSupport;
+
 /**
  * Created by janpeuker on 30/10/14.
  */

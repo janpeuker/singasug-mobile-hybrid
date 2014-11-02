@@ -18,19 +18,19 @@ public class StockPriceServiceTest {
 
     @Test
     public void testPriceIsRandomForInvalidValues() throws Exception {
-        assertTrue(stockPriceService.getPriceForSymbol("").doubleValue() >= 0);
-        assertTrue(stockPriceService.getPriceForSymbol(null).doubleValue() >= 0);
+        assertTrue(stockPriceService.getRawPriceForSymbol("").doubleValue() >= 0);
+        assertTrue(stockPriceService.getRawPriceForSymbol(null).doubleValue() >= 0);
     }
 
     @Test
     public void testPriceIsHigherThanZero() throws Exception {
-        assertTrue(stockPriceService.getPriceForSymbol("GOOG").doubleValue() >= 0);
+        assertTrue(stockPriceService.getRawPriceForSymbol("GOOG").doubleValue() >= 0);
     }
 
     @Test
     public void testTwoPricesAreNeverTheSame() throws Exception {
-        assertTrue(stockPriceService.getPriceForSymbol("GOOG").doubleValue() != stockPriceService.getPriceForSymbol("GOOG").doubleValue());
+        assertTrue(stockPriceService.getRawPriceForSymbol("GOOG").doubleValue() != stockPriceService.getRawPriceForSymbol("GOOG").doubleValue());
         // This Tests could actually fail as there is a very low probability that the values are the same
-        assertTrue(stockPriceService.getPriceForSymbol("AAPL").doubleValue() != stockPriceService.getPriceForSymbol("GOOG").doubleValue());
+        assertTrue(stockPriceService.getRawPriceForSymbol("AAPL").doubleValue() != stockPriceService.getRawPriceForSymbol("GOOG").doubleValue());
     }
 }

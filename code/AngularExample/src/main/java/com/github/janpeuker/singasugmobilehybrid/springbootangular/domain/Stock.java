@@ -1,6 +1,8 @@
 package com.github.janpeuker.singasugmobilehybrid.springbootangular.domain;
 
 import org.springframework.hateoas.ResourceSupport;
+
+
 /**
  * Created by janpeuker on 22/10/14.
  */
@@ -17,7 +19,6 @@ public class Stock extends ResourceSupport {
     }
 
     public String getSymbol() {
-
         return symbol;
     }
 

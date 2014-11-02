@@ -1,18 +1,23 @@
 package com.github.janpeuker.singasugmobilehybrid.springbootangular.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.hateoas.ResourceSupport;
+
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
 /**
  * Created by janpeuker on 30/10/14.
  */
-public class Price {
+public class Price extends ResourceSupport {
 
     private String symbol;
     private BigDecimal price;
-    private long asOfTime;
+    @JsonSerialize(using = ZonedDateTimeSerializer.class)
+    private ZonedDateTime asOfTime;
     private String currency;
 
-    public Price(String symbol, BigDecimal price, long dateAsOf, String currency) {
+    public Price(String symbol, BigDecimal price, ZonedDateTime dateAsOf, String currency) {
         this.symbol = symbol;
         this.price = price;
         this.asOfTime = dateAsOf;
@@ -35,11 +40,11 @@ public class Price {
         this.price = price;
     }
 
-    public long getAsOfTime() {
+    public ZonedDateTime getAsOfTime() {
         return asOfTime;
     }
 
-    public void setAsOfTime(long asOfTime) {
+    public void setAsOfTime(ZonedDateTime asOfTime) {
         this.asOfTime = asOfTime;
     }
 

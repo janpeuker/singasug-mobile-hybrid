@@ -1,8 +1,10 @@
 package com.github.janpeuker.singasugmobilehybrid.springbootangular.service;
 
+import com.github.janpeuker.singasugmobilehybrid.springbootangular.domain.Price;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,8 +18,14 @@ public class StockPriceService {
     private enum Market { BULL, BEAR };
     private final Map<String, Market> priceTendencies = new ConcurrentHashMap<String, Market>();
 
+
+    public Price getPriceForSymbol(final String symbol) {
+        // TODO: Get correct Currency from Exchange
+        return new Price(symbol, getRawPriceForSymbol(symbol), ZonedDateTime.now(), "USD");
+    }
+
     // TODO: Replace by JSR 354 in Java 9
-    public BigDecimal getPriceForSymbol(final String symbol) {
+    public BigDecimal getRawPriceForSymbol(final String symbol) {
 
         BigDecimal returnValue = null;
 
