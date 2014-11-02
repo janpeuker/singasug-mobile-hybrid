@@ -84,7 +84,7 @@
 						<div class="listwithheaders">
 							<ul>
 								<lh>Access</lh>
-								<li>Verb: State synchred through commands, minimal data</li>
+								<li>Verb: State synced through commands, minimal data</li>
 								<li><a href="http://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling">Noun</a>: State and Data transition, minimal commands</li>
 							</ul>
 							<ul>
@@ -101,12 +101,12 @@
 						<ul>
 							<li>Maximum Decoupling</li>
 							<li>Maximum Resilience</li>
-							<li>Fuelled by Agile, <a href="http://www.joelonsoftware.com/items/2010/03/17.html">distributed SCM</a>, Continuous Delivery,<br /> DevOps, <a href="http://devops.com/blogs/meet-infrastructure-code/">Infrastructure as Code</a></li>
-							<li>Fuelled by Lean, Analytics/Heuristics, Product/Design Thinking</li>
-							<li>Fuelled by <a href="https://vagrantcloud.com/">Virtualization</a>, <a href="http://12factor.net/backing-services">Cloud</a>, SDN, Elastic Scalability</li>
+							<li>Fueled by Agile, <a href="http://www.joelonsoftware.com/items/2010/03/17.html">distributed SCM</a>, Continuous Delivery,<br /> DevOps, <a href="http://devops.com/blogs/meet-infrastructure-code/">Infrastructure as Code</a></li>
+							<li>Fueled by Lean, Analytics/Heuristics, Product/Design Thinking</li>
+							<li>Fueled by <a href="https://vagrantcloud.com/">Virtualization</a>, <a href="http://12factor.net/backing-services">Cloud</a>, SDN, Elastic Scalability</li>
 						</ul>
 						<aside class="notes">
-							Links are only examples, e.g. Docker instead of Vagrant, Microservices, DDoS Attacks, Data Versioning (Cassendra, CouchDB etc) instead of distributed Transactions, DevOps and Infrastructure Versioning alongside Code
+							Links are only examples, e.g. Docker instead of Vagrant, Micro-services, DDoS Attacks, Data Versioning (Cassandra, CouchDB etc) instead of distributed Transactions, DevOps and Infrastructure Versioning alongside Code. Time to Market for <a href="http://www.zdnet.com/the-mobile-app-culture-has-spoiled-everyone-survey-shows-7000027575/">Mobile Apps</a>
 						</aside>
 					</section>
 					<section>
@@ -171,9 +171,9 @@ class PersonController {
 						<h2>Distributed Processing on Resources</h2>
 						<h4><a href="http://alistapart.com/article/offline-first">Offline First</a> vs. traditional Sync</h4>
 						<ul>
-							<li>Hybrid changs Integration to more Async (Single Thrad<br /> updates DOM as ViewModel), use of HTML 5 Storage</li>
+							<li>Hybrid changes Integration to more Async (Single Thread<br /> updates DOM as ViewModel), use of HTML 5 Storage</li>
 							<li>Integration model includes State Transfer</li>
-							<li>Databinding on <a href="http://msdn.microsoft.com/en-us/library/gg405484(v=pandp.40).aspx">MVVM</a> allows fine-granular sync e.g. <br /><a href="http://backbonejs.org/">Backbone</a> provides Binding and Event Bus</a>
+							<li>Data-binding on <a href="http://msdn.microsoft.com/en-us/library/gg405484(v=pandp.40).aspx">MVVM</a> allows fine-granular sync e.g. <br /><a href="http://backbonejs.org/">Backbone</a> provides Binding and Event Bus</a>
 							<li>Can be implemented alongside <a href="http://msdn.microsoft.com/en-us/library/dn568103.aspx">CQRS</a></li>
 						</ul>
 						<aside class="notes">Clean HTML 5, complex structure (Tables etc) discouraged). Links to Microsoft as they were quite early with those patterns and enabled LINQ to work with</aside>
@@ -218,10 +218,26 @@ class PersonController {
 						<ul>
 							<li><a href="http://www.reactivemanifesto.org/">Reactive</a> is Responsive, Elastic, Resilient, Message-Driven</li>
 							<li>Event Bus spanning the Client e.g. <a href="http://vertx.io/">Vert.x</a>, Angular Event Bus</li>
-							<li>Client that has attention retrieves shortes incremental updates</li>
+							<li>Client that has attention retrieves shorter incremental updates</li>
 							<li><a href="http://doc.akka.io/docs/akka/snapshot/general/actors.html">Actor model</a> enables and Event-Sourcing update syncable Cache</li>
-							<li><a href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">Java 8 Streams</a> can be used for constructing state</li>
+							<li>A centralized <a href="http://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">Log</a> requires a Domain-Driven-Design</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Back-End Implications</h2>
+						<h4>Stateless Interfaces, Graceful Degradation, Data Retention</h4>
+						<ul>					
+							<li>Versions and scalability forbid state and heavy, fixed contracts</li>
+							<li>Deployments have to be faster, less side-effects</li>
+							<li>State and Sessions need to externalized, security-integrated</li>
 							<li>...Developers become <a href="http://radar.oreilly.com/2013/11/polyglot-programming-what-is-it-and-why-should-you-be-using-it.html">Polyglot</a> in addition to DevOps</li>
+							<li>Interesting developments in the Java sphere:
+								<ul>
+									<li><a href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">Java 8 Streams</a> can be used for constructing state e.g. with <a href="http://kafka.apache.org/">Kafka</a></li>
+									<li><a href="https://java.net/projects/java-state-managemen/pages/OverviewOfStateManagement">JSR 350</a> State Management</li>
+									<li><a href="http://www.infoq.com/news/2011/10/java-data-grid">JSR 347</a> Data Grid and Hazelcast, Gemfire</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 					<section>
@@ -230,6 +246,7 @@ class PersonController {
 						<ul>
 							<li>React.js is....</li>
 							<li>Atmosphere is....</li>
+							<li>An example is the <a href="https://dev.twitter.com/streaming/overview">Twitter Stream API</a></li>
 						</ul>
 					</section>
 					<section>
@@ -241,6 +258,8 @@ class PersonController {
 				<section>
 					<h1>No questions lah!</h1>
 					<h4>Thanks!</h4>
+					<p><a href="https://twitter.com/janpeuker">Jan Peuker</a> / <a href="https://twitter.com/arudenko">Alex Rudenko</a></p>
+					<p>Talk and Code at <a href="https://github.com/janpeuker/singasug-mobile-hybrid">GitHub</a>
 				</section>
 
 				<!-- Example of nested vertical slides
