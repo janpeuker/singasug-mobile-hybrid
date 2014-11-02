@@ -228,13 +228,55 @@ class PersonController {
 						<h2>React.js and Atmosphere</h2>
 						<h4>Streams and Components combined</h4>
 						<ul>
-							<li>React.js is....</li>
+							<li><a href="http://facebook.github.io/react/">React.js</a> is a library to build UI components</li>
 							<li>Atmosphere is....</li>
 						</ul>
 					</section>
 					<section>
 						<h2>React.js example with Atmosphere</h2>
-						<pre><code class="javascript">//TODO</code></pre>
+						<pre><code class="javascript">
+var StockApp = React.createClass({
+    getInitialState: function() {
+        return {data: initial_data};
+    },
+
+    tick: function() {
+        var message = getRandomMessage();
+
+        //Find symbol
+        var data = this.state.data;
+        data.content.forEach(function(entry) {
+            if (entry.symbol === message.symbol){
+                entry.price = message.price;
+                entry.change = message.change;
+            }
+        });
+
+        this.setState({data: data});
+    },
+    componentDidMount: function() {
+        this.interval = setInterval(this.tick, 150);
+    },
+    componentWillUnmount: function() {
+        clearInterval(this.interval);
+    },
+
+    render: function () {
+        var stocks = this.state.data.content.map(function(stock){
+            return (
+                <Stock
+                    key={stock.symbol}
+                    symbol={stock.symbol}
+                    exchange={stock.exchange}
+                    price={stock.price}
+                    change={stock.change}
+                />
+            );
+        });
+        return <div>Stocks {stocks}</div>;
+    }
+});							
+						</code></pre>
 						<aside class="notes">Atmosphere not necessary, see Socket.io</aside>
 					</section>
 				</section>
