@@ -18,23 +18,24 @@ import java.util.Map;
  */
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/stocks")
 public class StockResourceController {
 
     @Autowired
     private StocksRepository stocksRepository;
 
-    @RequestMapping(value = "/stocks", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public HttpEntity<Collection<Stock>> getStocksResource(@RequestParam(value = "exchange", required = false) String exchange) {
+    public HttpEntity<Collection<Stock>> showAllStocks(@RequestParam(value = "exchange", required = false) String exchange) {
 
         Collection<Stock> stocks = stocksRepository.getStocks().values();
 
         return new ResponseEntity<Collection<Stock>>(stocks, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/stocks/{symbol}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{symbol}", method = RequestMethod.GET)
     @ResponseBody
-    public HttpEntity<Stock> getStockResource(@PathVariable(value="symbol") String symbol) {
+    public HttpEntity<Stock> showStock(@PathVariable(value="symbol") String symbol) {
 
         ResponseEntity<Stock> response = null;
 

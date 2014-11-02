@@ -1,0 +1,43 @@
+/**
+ * Some specifics
+ * Author: Jan Peuker
+ */
+
+.reveal h4 {
+  text-shadow: 0px 0px 0.1em rgba(0, 0, 0, 0.3); }
+
+.reveal h3 {
+  text-shadow: 0px 0px 0.1em rgba(0, 0, 0, 0.3); }
+
+.reveal h2 {
+  text-shadow: 0px 0px 0.2em rgba(0, 0, 0, 0.4); }
+
+.reveal div.listwithheaders {
+	font-size: 90%;
+	display: inline-block;
+}
+
+.reveal p.emphasis {
+	margin: 0.6em 0 0.6em 0;
+}
+
+.reveal .listwithheaders lh {
+	font-size: 120%;
+	margin-top: 0.4em;
+	display: block;
+	text-align: left;
+	text-indent: -1.1em;
+}
+
+.reveal .listwithheaders ol, .reveal .listwithheaders ul {
+	display: block;
+}
+
+.reveal .dark ol, .reveal .dark ul {
+	text-shadow: 0.2em 0.2em 2em rgba(0, 0, 0, 1); 
+}
+
+.reval .dark a {
+	color: #78b9e6;
+}
+

@@ -15,7 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="css/jan.css">		
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -43,65 +44,203 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Backend Interfaces for Mobile Hybrid Development</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h2>Backend Interfaces</br>for Mobile Hybrid Development</h2>
+					<h4><a href="https://twitter.com/janpeuker">Jan Peuker</a> / <a href="https://twitter.com/arudenko">Alex Rudenko</a></h4>
+					<h4><a href"http://www.meetup.com/singasug/events/213144282/">Singasug</a> / Nov 2, 2014</h4>
 					<p>
 						<small>Based on Reveal.js by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
 					</p>
 				</section>
 
 				<section>
+						<h1>Mobile is eating the world</h1>
+						<p>Luckily no one asks why Mobile is important anymore</p>
+						<blockquote cite="http://www.slideshare.net/a16z/mobile-is-eating-the-world-40841467">
+							Mobile is eating the world - Tech outgrows the tech industry - Ben Evans
+						</blockquote>
+						<blockquote cite="https://www.gartner.com/doc/2814941/hype-cycle-digital-banking-">
+							For Gartner, Smartphone Banking is already sliding in the trough
+						</blockquote>
+						<aside class="notes">
+							Google, Gartner etc references. Most important: Tech outgrows tech industry, "Everything is Digital"
+						</aside>						
+				</section>
 					<section>
-					<h1>Mobile Integration</h1>
-					<p>Luckily no one asks why Mobile is important anymore</p>
-					<aside class="notes">
-						Google, Gartner etc references
-					</aside>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>						
+						<h2>Recap Mobile Architecture</h2>
+						<ul>
+							<li>Occasionally connected, <a href="http://chimera.labs.oreilly.com/books/1230000000545/ch08.html">infrequent better</a></li>
+							<li><a href="http://www.aosabook.org/en/posa/secrets-of-mobile-network-performance.html">High Latency</a>, High Throughput, High Variance</li>
+							<li><a href="http://www.zeldman.com/2014/03/09/evolving-responsive-web-design/">Responsive</a>, Adaptive, Gracefully Degradable</li>
+							<li>Pervasive: <a href="https://developer.mozilla.org/en-US/Apps/app_layout/Mobile_first">Mobile First</a>, <a href="http://www.android.com/versions/lollipop-5-0/">Fluid</a>, Multi/Omni-Screen/Device</li>
+							<li>Out of Control, <a href="http://www.infoq.com/news/2013/12/api-versioning">Multi-Version</a>, Unsecured Access</a>
+						</ul>
+						<aside class="notes">
+							Out of Control in terms of Fragmentation, Device Manufacturers, App Store Delivery, Upgrade Cycles, Proxy/Network Infrastructure etc.
+						</aside>
+					</section>	
+				<section>	
+					<section>
+						<h2>Recap Mobile Integration</h2>
+						<div class="listwithheaders">
+							<ul>
+								<lh>Access</lh>
+								<li>Verb: State synchred through commands, minimal data</li>
+								<li><a href="http://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling">Noun</a>: State and Data transition, minimal commands</li>
+							</ul>
+							<ul>
+								<lh>Concurrency</lh>
+								<li>Sync: MVC/3-Tier, Form submission, RMI/SOFEA, Snapshot Versioning</li>
+								<li><a href="http://research.gigaom.com/2013/05/the-synchronous-vs-asynchronous-communication-debate-is-like-deja-vu-all-over-again/">Async</a>: Android Providers + Intents, iOS Core Data + Queue</li>
+							</ul>
+						</div>
+						<p class="emphasis">=> Noun/Sync a.k.a. Data Synchronization prevalent (e.g. SAP)</p>
+					</section>
+					<section>
+						<h2>From Client-Server to distributed Systems</h2>
+						<h4>Concurrent data and process versions<br />with minimal downtime for upgrades</h4>
+						<ul>
+							<li>Maximum Decoupling</li>
+							<li>Maximum Resilience</li>
+							<li>Fuelled by Agile, <a href="http://www.joelonsoftware.com/items/2010/03/17.html">distributed SCM</a>, Continuous Delivery,<br /> DevOps, <a href="http://devops.com/blogs/meet-infrastructure-code/">Infrastructure as Code</a></li>
+							<li>Fuelled by Lean, Analytics/Heuristics, Product/Design Thinking</li>
+							<li>Fuelled by <a href="https://vagrantcloud.com/">Virtualization</a>, <a href="http://12factor.net/backing-services">Cloud</a>, SDN, Elastic Scalability</li>
+						</ul>
+						<aside class="notes">
+							Links are only examples, e.g. Docker instead of Vagrant, Microservices, DDoS Attacks, Data Versioning (Cassendra, CouchDB etc) instead of distributed Transactions, DevOps and Infrastructure Versioning alongside Code
+						</aside>
+					</section>
+					<section>
+						<h2>Resource-Driven Integration</h2>
+						<h4>REST already has distributed state, caching and versioning</h4>
+						<div class="dark">
+							<ul>
+								<li>HTTP <a href="http://restcookbook.com/Miscellaneous/richardsonmaturitymodel/">Infrastructure</a> in public Internet can be leveraged</li>
+								<li><a href="http://blog.steveklabnik.com/posts/2011-08-07-some-people-understand-rest-and-http">Hypermedia</a> can be leveraged</li>
+								<li><a href="https://blog.codecentric.de/en/2012/11/a-restful-learning-curve-nouns-verbs-hateoas-and-roca/">ROCA</a> application patterns resemble the Web
+								<li><a href="https://blog.apigee.com/detail/api_centric_data_architectures">API</a> / <a href="http://martinfowler.com/articles/microservices.html">Microservice</a> Hype due to multi-paradigm access</li>
+								<li>Security is still a problem (Entitlements/RBAC not solved)</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>Spring HATEOAS Example</h2>
+						<pre><code class="java">@Controller
+@RequestMapping("/stocks")
+@EnableHypermediaSupport(type = HypermediaType.HAL)
+class PersonController {
+
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity&lt;Stock&gt; showAll() { … }
+
+  @RequestMapping(value = "/{symbol}", method = RequestMethod.GET)
+  public ResponseEntity&lt;Stock&gt; show(@PathVariable String symbol) {
+    ...
+  	Link link = Link link = links.linkToSingleResource(StockPrice.class, symbol);
+  	...
+    headers.setContentType(MediaType.parseMediaType
+        ("application/vnd.janpeuker.stocks+json; version=1.0"));
+    headers.setETag(stock.getVersionedUniqueId())
+  	headers.setPragma("cache");
+    headers.setExpires
+        (ZonedDateTime.now().plus(stock.getValidityAsTemporalAmount())
+        .toInstant().toEpochMilli());
+  	...
+  }
+}</code></pre>
+						<p><small>Versioning and Naming (e.g. <a href="http://jsonapi.org/format/">JSON API</a>) is the tricky question to answer here.</small></p>
+						<p><small>A JAX-RS example can be found at <a href="https://devcenter.heroku.com/articles/jax-rs-http-caching">Heroku</a></small></p>
+						<p><small>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</small></p>
+						<aside class="notes">
+							Question Versioning (web.xml v1?), not Microservice compatible, Caching not solved as nice as in in JAX-RS. No Accept as Format not universal. JSON API standards should be used.
+						</aside>
 					</section>					
+				</section>
+
+				<section>
 					<section>
-						<h2>From Client-Server to distributed, pervasive, systems</h2>
+						<h2>Hybrid Development</h2>
+						<h4>Hybrid HTML 5 is <a href="http://www.lukew.com/ff/entry.asp?1863">ready</a></h4>
+						<ul>
+							<li>Natural choice as problems solved in HTTP</li>
+							<li>Security and caching can be customized in native container</li>
+							<li>Device UI argument gets weaker (e.g. <a href="http://www.google.com/design/spec/material-design/introduction.html">Material Design)</a></li>
+							<li>Traction to go HTML 5 (SAP, IBM, Titanium, Kony, Xamarin)</li>
+						</ul>				
 					</section>
 					<section>
-						<h2>Data-Driven Integration REST relevance for distributed state, caching and versioning</h2>
+						<h2>Distributed Processing on Resources</h2>
+						<h4><a href="http://alistapart.com/article/offline-first">Offline First</a> vs. traditional Sync</h4>
+						<ul>
+							<li>Hybrid changs Integration to more Async (Single Thrad<br /> updates DOM as ViewModel), use of HTML 5 Storage</li>
+							<li>Integration model includes State Transfer</li>
+							<li>Databinding on <a href="http://msdn.microsoft.com/en-us/library/gg405484(v=pandp.40).aspx">MVVM</a> allows fine-granular sync e.g. <br /><a href="http://backbonejs.org/">Backbone</a> provides Binding and Event Bus</a>
+							<li>Can be implemented alongside <a href="http://msdn.microsoft.com/en-us/library/dn568103.aspx">CQRS</a></li>
+						</ul>
+						<aside class="notes">Clean HTML 5, complex structure (Tables etc) discouraged). Links to Microsoft as they were quite early with those patterns and enabled LINQ to work with</aside>
 					</section>
 					<section>
-						<h2>Decoupled, multi-versioned systems, resilience, Spring Boot Example (mentioning Microservices)</h2>
+						<h2>Single Page Web Apps</h2>
+						<h4>Using the Browser as Engine for RIA</h4>
+						<ul>
+					        <li><a href="http://en.wikipedia.org/wiki/Single-page_application">Single Page Application</a> pattern includes Routing, Templating</li>
+					        <li>Very similar to Hybrid Applications, only Framework native</li>
+					        <li><a href="https://angularjs.org/">AngularJS</a> provides <a href="http://codeofrob.com/entries/you-have-ruined-javascript.html">separation</a>, better Testability</li>
+					        <li>Dependencies tricky, look at WebJars and <a href="https://github.com/yeoman/grunt-bower-requirejs">Yeoman/Bower/RequireJS</a></li>
+                            <li>Use <a href="http://www.shopify.com/technology/15646068-rebuilding-the-shopify-admin-improving-developer-productivity-by-deleting-28-000-lines-of-javascript">Progressive Enhancement</a>, Server Rendering, then Changes</li>
+                            <li>E.g. <a href="http://radar.oreilly.com/2014/10/isomorphic-javascript-with-lazojs.html">LazoJS</a> and <a href="http://nerds.airbnb.com/weve-open-sourced-rendr-run-your-backbonejs-a/">Rendr</a>(uses Backbone)</li>
+                        </ul>
+                    </section>
+					<section>
+						<h2>AngularJS Example</h2>
+						<h4>Simple use for two-way Databinding, <a href="http://angularjs.blogspot.sg/2014/10/ng-europe-angular-13-and-beyond.html">2.0 goes MVVM</a></h4>
+						<pre><code class="javascript">//TODO</code></pre>
+						<aside class="notes">Angular 2.0 NG-Europe Event</aside>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h1>Hybrid Development</h1>
-						<h2>Hybrid vs. Native, why HTML 5 is ready</h2>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>						
+						<!-- <a href=""></a> -->
+						<h2>Future of Interfaces</h2>
+						<h4>Omni/Multi/Cross-Channel approaches</h4>
+						<ul>
+							<li>Multiple Screens/Devices at the same time</li>
+							<li>Network session decoupled from User Session</li>
+					        <li><a href="https://www.google.com/think/multiscreen/start.html">Multiscreen</a> cannot be solved efficiently with Databinding</li>
+					        <li>Hybrid components reused e.g. <a href="https://www.polymer-project.org/">Polymer</a> Web Components</li>
+					        <li><a href="http://en.wikipedia.org/wiki/Comparison_of_server-side_JavaScript_solutions">Server-Side</a> Components in JavaScript reuse Domain Model</li>
+						</ul>
+						<aside class="notes">SSJS, CouchDB (Lotus Notes Apps, but SpiderMonkey) Nashorn, Node.js, Yahoo Cocktails, OpenDolphin Concepts</aside>						
 					</section>
 					<section>
-						<h2>Databinding, MVVM, Sync as integration model, Angular relevance (mentioning JavaScript on the server)</h2>
+						<h2>Reactive Applications</h2>
+						<h4>Eventstream-driven applications, distributed share-nothing</h4>
+						<ul>
+							<li><a href="http://www.reactivemanifesto.org/">Reactive</a> is Responsive, Elastic, Resilient, Message-Driven</li>
+							<li>Event Bus spanning the Client e.g. <a href="http://vertx.io/">Vert.x</a>, Angular Event Bus</li>
+							<li>Client that has attention retrieves shortes incremental updates</li>
+							<li><a href="http://doc.akka.io/docs/akka/snapshot/general/actors.html">Actor model</a> enables and Event-Sourcing update syncable Cache</li>
+							<li><a href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">Java 8 Streams</a> can be used for constructing state</li>
+							<li>...Developers become <a href="http://radar.oreilly.com/2013/11/polyglot-programming-what-is-it-and-why-should-you-be-using-it.html">Polyglot</a> in addition to DevOps</li>
+						</ul>
 					</section>
 					<section>
-						<h2>Angular example with Spring HATEOAS  (with Polymer reference)</h2>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h1>Future of Internfaces</h1>
-						<h2>Omni/Multi/Cross-Channel Development, Multiscreen approaches</h2>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>						
-					</section>
-					<section>
-						<h2>Reactive (Manifesto), Eventstream-Driven applications, distributed share-nothing state</h2>
+						<h2>React.js and Atmosphere</h2>
+						<h4>Streams and Components combined</h4>
+						<ul>
+							<li>React.js is....</li>
+							<li>Atmosphere is....</li>
+						</ul>
 					</section>
 					<section>
 						<h2>React.js example with Atmosphere</h2>
+						<pre><code class="javascript">//TODO</code></pre>
+						<aside class="notes">Atmosphere not necessary, see Socket.io</aside>
 					</section>
+				</section>
+				<section>
+					<h1>No questions lah!</h1>
+					<h4>Thanks!</h4>
 				</section>
 
 				<!-- Example of nested vertical slides
@@ -412,18 +551,18 @@ function linkify( selector ) {
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				theme: 'night', // Reveal.getQueryHash().theme, available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+				parallaxBackgroundImage: 'img/pearlcenter.jpg',
+				parallaxBackgroundSize: '2328px 1330px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					/* { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }, */
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
