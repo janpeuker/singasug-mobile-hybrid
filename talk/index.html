@@ -217,8 +217,8 @@ class PersonController {
 						<h4>Eventstream-driven applications, distributed share-nothing</h4>
 						<ul>
 							<li><a href="http://www.reactivemanifesto.org/">Reactive</a> is Responsive, Elastic, Resilient, Message-Driven</li>
-							<li>Event Bus spanning the Client e.g. <a href="http://vertx.io/">Vert.x</a>, Angular Event Bus</li>
-							<li>Client that has attention retrieves shorter incremental updates</li>
+							<li>Event Bus spanning the Client e.g. <a href="https://github.com/Atmosphere/atmosphere">Atmosphere</a>, Angular Event Bus</li>
+							<li>Clients retrieve shorter, incremental, update blocks<br />e.g. WebSockets, HTML5 SSE, Comet, Long Polling</li>
 							<li><a href="http://doc.akka.io/docs/akka/snapshot/general/actors.html">Actor model</a> enables and Event-Sourcing update syncable Cache</li>
 							<li>A centralized <a href="http://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying">Log</a> requires a Domain-Driven-Design</li>
 						</ul>
@@ -227,15 +227,16 @@ class PersonController {
 						<h2>Back-End Implications</h2>
 						<h4>Stateless Interfaces, Graceful Degradation, Data Retention</h4>
 						<ul>					
-							<li>Versions and scalability forbid state and heavy, fixed contracts</li>
+							<li>Versions forbid heavy state and contracts, e.g.<a href="http://vertx.io/">Vert.x</a></li>
 							<li>Deployments have to be faster, less side-effects</li>
 							<li>State and Sessions need to externalized, security-integrated</li>
 							<li>...Developers become <a href="http://radar.oreilly.com/2013/11/polyglot-programming-what-is-it-and-why-should-you-be-using-it.html">Polyglot</a> in addition to DevOps</li>
 							<li>Interesting developments in the Java sphere:
 								<ul>
-									<li><a href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">Java 8 Streams</a> can be used for constructing state e.g. with <a href="http://kafka.apache.org/">Kafka</a></li>
+									<li><a href="http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html">Java 8 Streams</a>/Async Servlets can be used for constructing<br /> state e.g. with <a href="http://kafka.apache.org/">Kafka</a></li>
 									<li><a href="https://java.net/projects/java-state-managemen/pages/OverviewOfStateManagement">JSR 350</a> State Management</li>
 									<li><a href="http://www.infoq.com/news/2011/10/java-data-grid">JSR 347</a> Data Grid and Hazelcast, Gemfire</li>
+									<li><a href="http://www.infoq.com/news/2011/10/java-data-grid">JHipster</a> comes with Async support</li>
 								</ul>
 							</li>
 						</ul>
@@ -245,7 +246,7 @@ class PersonController {
 						<h4>Streams and Components combined</h4>
 						<ul>
 							<li>React.js is....</li>
-							<li>Atmosphere is....</li>
+							<li><a href="http://async-io.org/tutorial.html">Atmosphere</a> is a Java/JavaScript framework for asynchronous processes</li>
 							<li>An example is the <a href="https://dev.twitter.com/streaming/overview">Twitter Stream API</a></li>
 						</ul>
 					</section>
