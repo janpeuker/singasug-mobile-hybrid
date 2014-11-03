@@ -20,6 +20,21 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<p>Serving static HTML5 Boilerplate content</p>
+<script src="libs/jquery.min.js"></script>
+<script src="libs/react.js"></script>
+<script src="libs/JSXTransformer.js"></script>
+<script type="text/jsx" src="js/stocks.js"></script>
+
+<div id="example"></div>
+<script type="text/jsx">
+    /** @jsx React.DOM */
+    React.renderComponent(
+            <StockApp ></StockApp>,
+
+            document.getElementById('example')
+    );
+</script>
+
+
 </body>
 </html>
