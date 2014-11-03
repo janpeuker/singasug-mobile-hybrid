@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" id="ng-app" ng-app> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" id="ng-app" ng-app> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ng-app="AngularExample"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,24 +17,34 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
     <![endif]-->
-    <script type="text/javascript" src="/webjars/angularjs/1.3.0/angular.min.js"></script>
-    <script type="text/javascript">
-        angular.module('index', [])
-          .controller('IndexController', ['$scope', function($scope) {
-            $scope.username = 'default';
-          }]);
-    </script>
+    <script type="text/javascript" src="/webjars/angularjs/1.3.0/angular.js"></script>
 </head>
 <body>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<p>Enter Name: <input ng-model="username"></p>
-<div ng-controller="IndexController">
-<p>Serving some fancy HTML5 Boilerplate and Angular {{username}} content, doubled <span ng-bind="username"></span></p>
-</div>
+<form name="stockPrice">
 
+    <div ng-controller="IndexController">
+        <p>Enter Stock Symbol: <input type="text" name="stockName " ng-model="stockname" placeholder="GOOG" ng-change="lookup()"></p>
+        <p>Fancy Angular async Update, Price for {{stockname}} is <span ng-bind="stockprice"></span></p>
+    </div>
+</form>
+
+<script type="text/javascript">
+        angular.module('AngularExample', [])
+          .controller('IndexController', ['$scope', '$http', function($scope, $http) {
+              $scope.lookup = function() {
+                  $http.get('/price/' + $scope.stockname).
+                  success(function(data, status) {
+                    $scope.stockprice = data.price;
+                  }).error(function(data, status) {
+                    console.log("Error:" + status + " on " + data);
+                  });
+              };
+          }]);
+    </script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
