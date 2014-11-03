@@ -3,15 +3,13 @@ package com.github.janpeuker.singasugmobilehybrid.springbootsimple.resources;
 import com.github.janpeuker.singasugmobilehybrid.springbootsimple.domain.Stock;
 import com.github.janpeuker.singasugmobilehybrid.springbootsimple.repository.StocksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by janpeuker on 22/10/14.
