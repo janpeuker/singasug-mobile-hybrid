@@ -41,4 +41,26 @@ public class Stock extends ResourceSupport {
     public void setExchange(String exchange) {
         this.exchange = exchange;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Stock stock = (Stock) o;
+
+        if (exchange != null ? !exchange.equals(stock.exchange) : stock.exchange != null) return false;
+        if (symbol != null ? !symbol.equals(stock.symbol) : stock.symbol != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (symbol != null ? symbol.hashCode() : 0);
+        result = 31 * result + (exchange != null ? exchange.hashCode() : 0);
+        return result;
+    }
 }

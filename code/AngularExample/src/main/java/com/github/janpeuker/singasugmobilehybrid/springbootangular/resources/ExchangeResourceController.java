@@ -52,11 +52,9 @@ public class ExchangeResourceController {
         // which is needed because Identifyable cannot be overriden with an actual ID
         Exchange e = exchanges.get(shorthand);
         e = new Exchange(e.getName(), e.getLocation());
-        List<Link> links = new ArrayList<Link>();
         for (Stock s : stocksRepository.getAllStocksForExchange(shorthand)) {
-            links.add(entityLinks.linkToSingleResource(Stock.class, s.getSymbol()).withRel("stocks"));
+            e.add(entityLinks.linkToSingleResource(Stock.class, s.getSymbol()).withRel("stocks"));
         }
-        e.add(links);
         return e;
     }
 
