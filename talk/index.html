@@ -249,7 +249,15 @@ class PersonController {
 						<h2>React.js and Atmosphere</h2>
 						<h4>Streams and Components combined</h4>
 						<ul>
-							<li><a href="http://facebook.github.io/react/">React.js</a> is a library to build UI components</li>
+							<li><a href="http://facebook.github.io/react/">React.js</a> is a library to build UI components
+							<ul>
+								<li>Reusable Components</li>
+								<li>One-way data flow</li>
+								<li>Virtual DOM</li>
+								<li>Server-Side Rendering</li>
+							</ul>
+							</li>
+
 							<li><a href="http://async-io.org/tutorial.html">Atmosphere</a> is a Java/JavaScript framework for asynchronous processes</li>
 							<li>An example is the <a href="https://dev.twitter.com/streaming/overview">Twitter Stream API</a></li>
 						</ul>
@@ -307,6 +315,38 @@ var StockApp = React.createClass({
 						localhost:8080/stocks/GOOG
 						errors, environment, health, beans, info, metrics, trace, configprops, and dump
 						</aside>
+					</section>
+					<section>
+						<h2>Testing of React.js</h2>
+						<ul>
+							<li><a href="http://myshareoftech.com/2013/12/unit-testing-react-dot-js-with-jasmine-and-karma.html">Unit Testing React.js With Jasmine and Karma</a></li>
+						</ul>
+						<pre>
+							<code class="javascript">
+describe("Label Test",function(){
+        beforeEach(function() {
+            ReactTestUtils = React.addons.ReactTestUtils;
+        });
+
+
+        it("Check Text Assignment", function () {
+            var label = <Label>Some Text We Need for Test</Label>;
+            ReactTestUtils.renderIntoDocument(label);
+            expect(label.refs.p).toBeDefined();
+            expect(label.refs.p.props.children).toBe("Some Text We Need for Test")
+        });
+
+        it("Click", function () {
+            var label  = <Label>Some Text We Need to Test</Label>;
+            ReactTestUtils.renderIntoDocument(label);
+
+            ReactTestUtils.Simulate.click(label.refs.p);
+            expect(label.refs.p.props.children).toBe("Text After Click");
+        });
+
+    });								
+							</code>
+						</pre>
 					</section>
 				</section>
 				<section>
