@@ -55,6 +55,10 @@
 				</section>
 
 				<section>
+						<h2>#WIP</h2>
+						<h4>We give talks to learn ourselves</h4>
+				</section>
+				<!-- <section>
 						<h1>Mobile is eating the world</h1>
 						<p>Luckily no one asks why Mobile is important anymore</p>
 						<blockquote cite="http://www.slideshare.net/a16z/mobile-is-eating-the-world-40841467">
@@ -66,7 +70,7 @@
 						<aside class="notes">
 							Google, Gartner etc references. Most important: Tech outgrows tech industry, "Everything is Digital"
 						</aside>						
-				</section>
+				</section> -->
 					<section>
 						<h2>Recap Mobile Architecture</h2>
 						<ul>
@@ -74,7 +78,7 @@
 							<li><a href="http://www.aosabook.org/en/posa/secrets-of-mobile-network-performance.html">High Latency</a>, High Throughput, High Variance</li>
 							<li><a href="http://www.zeldman.com/2014/03/09/evolving-responsive-web-design/">Responsive</a>, Adaptive, Gracefully Degradable</li>
 							<li>Pervasive: <a href="https://developer.mozilla.org/en-US/Apps/app_layout/Mobile_first">Mobile First</a>, <a href="http://www.android.com/versions/lollipop-5-0/">Fluid</a>, Multi/Omni-Screen/Device</li>
-							<li>Out of Control, <a href="http://www.infoq.com/news/2013/12/api-versioning">Multi-Version</a>, Unsecured Access</a>
+							<li>Out of Control, <a href="http://www.infoq.com/news/2013/12/api-versioning">Multi</a>-<a href="http://martinfowler.com/articles/enterpriseREST.html#versioning">Version</a>, Unsecured Access</a>
 						</ul>
 						<aside class="notes">
 							Out of Control in terms of Fragmentation, Device Manufacturers, App Store Delivery, Upgrade Cycles, Proxy/Network Infrastructure etc.
@@ -103,7 +107,7 @@
 						<ul>
 							<li>Maximum Decoupling</li>
 							<li>Maximum Resilience</li>
-							<li>Fueled by Agile, <a href="http://www.joelonsoftware.com/items/2010/03/17.html">distributed SCM</a>, Continuous Delivery,<br /> DevOps, <a href="http://devops.com/blogs/meet-infrastructure-code/">Infrastructure as Code</a></li>
+							<li>Fueled by <a href="http://genehughson.wordpress.com/2013/07/06/emergence-versus-evolution/">Agile</a>, <a href="http://www.joelonsoftware.com/items/2010/03/17.html">distributed SCM</a>, Continuous Delivery,<br /> DevOps, <a href="http://devops.com/blogs/meet-infrastructure-code/">Infrastructure as Code</a></li>
 							<li>Fueled by Lean, Analytics/Heuristics, Product/Design Thinking</li>
 							<li>Fueled by <a href="https://vagrantcloud.com/">Virtualization</a>, <a href="http://12factor.net/backing-services">Cloud</a>, SDN, Elastic Scalability</li>
 						</ul>
@@ -176,7 +180,7 @@ class PersonController {
 							<li>Hybrid changes Integration to more Async (Single Thread<br /> updates DOM as ViewModel), use of HTML 5 Storage</li>
 							<li>Integration model includes State Transfer</li>
 							<li>Data-binding on <a href="http://angularjs.blogspot.sg/2014/10/ng-europe-angular-13-and-beyond.html">MVVM</a> allows fine-granular sync e.g. <br /><a href="http://backbonejs.org/">Backbone</a> provides Binding and Event Bus</a>
-							<li>Can be implemented alongside <a href="http://msdn.microsoft.com/en-us/library/dn568103.aspx">CQRS</a></li>
+							<!-- <li>Can be implemented alongside <a href="http://msdn.microsoft.com/en-us/library/dn568103.aspx">CQRS</a></li> -->
 						</ul>
 						<aside class="notes">Angular goes MVVM, Clean HTML 5, complex structure (Tables etc) discouraged). Links to Microsoft as they were quite early with those patterns and enabled LINQ to work with</aside>
 					</section>
@@ -232,7 +236,7 @@ class PersonController {
 						<h2>Back-End Implications</h2>
 						<h4>Stateless Interfaces, Graceful Degradation, Data Retention</h4>
 						<ul>					
-							<li>Versions forbid heavy state and contracts, e.g.<a href="http://vertx.io/">Vert.x</a></li>
+							<li>Versions forbid heavy state and contracts, e.g.<a href="https://news.ycombinator.com/item?id=4310483">Vert.x</a></li>
 							<li>View Model  in Services, Client-Side Cache</li>
 							<li>Deployments have to be faster, less side-effects</li>
 							<li>State and Sessions need to externalized, security-integrated</li>
@@ -352,7 +356,16 @@ describe("Label Test",function(){
 					</section>
 				</section>
 				<section>
-					<h1>No questions lah!</h1>
+					<h2>Summary</h2>
+					<uk>
+						<li>Mobile cuts through tiers and channels, Datasync is only half a solution</li>
+						<li>Decouple Context, Sessions, State and Services - persist them</li>
+						<li>Think applications as streams of events spanning across devices</li>
+						<li>Embrace agility, fluid, evolutionary change - and maybe versions</li>
+					</ul>
+				</section>
+				<section>
+					<h2>No questions lah!</h2>
 					<h4>Thanks!</h4>
 					<p><a href="https://twitter.com/janpeuker">Jan Peuker</a> / <a href="https://twitter.com/arudenko">Alex Rudenko</a></p>
 					<p>Talk and Code at <a href="https://github.com/janpeuker/singasug-mobile-hybrid">GitHub</a>
